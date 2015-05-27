@@ -1,0 +1,8 @@
+<?php
+
+namespace Core;
+
+return [
+    'core_template' => 'core',
+    'admin_template' => ''
+];

@@ -1,0 +1,101 @@
+
+.oh{overflow: hidden;}
+.pr{position: relative;}
+.fl{float: left;}
+.fr{float: right;}
+
+
+.m0i{margin: 0px !important;}
+
+.m0{margin: 0px;}
+.m7{margin: 7px;}
+.m8{margin: 8px;}
+
+
+
+.mt4{margin-top: 4px;}
+.mt5{margin-top: 5px;}
+.mt7{margin-top: 7px;}
+.mt10{margin-top: 10px;}
+.mt19{margin-top: 19px;}
+.mt20{margin-top: 20px;}
+.mt25{margin-top: 25px;}
+
+.ml-10{margin-left: -10px;}
+.ml10{margin-left: 10px;}
+.ml10i{margin-left: 10px !important;}
+
+.h28{height: 28px;}
+.h29{height: 29px;}
+.h30{height: 30px;}
+.h34{height: 34px;}
+.h64{height: 64px;}
+
+
+.h29i{height: 29px !important;}
+.h64i{height: 64px !important;}
+.h79i{height: 79px !important;}
+
+.p3{padding: 3px;}
+.p3i{padding: 3px !important;}
+
+.pl0{padding-left: 0px;}
+.pl10{padding-left: 10px;}
+
+.pr0{padding-right: 0px;}
+.pr5{padding-right: 5px;}
+.pr17{padding-right: 17px;}
+
+.pt10{padding-top: 10px;}
+
+.mb0{margin-bottom: 0px;}
+.mb5{margin-bottom: 5px;}
+.mb10{margin-bottom: 10px;}
+
+.w30{width: 30px;}
+.w36{width: 36px;}
+.w70{width: 70px;}
+.w100pr{width: 100%;}
+.w130{width: 130px;}
+.w270{width: 270px;}
+
+.br0{border-right: 0px;}
+
+.br0-fc > .form-control{border-right: 0px;}
+
+.mtb0-mlr10{
+    margin: 0 10px;
+}
+
+[block-name="table-create-form-from"] .modal-header{
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+[block-name="table-create-form-from"] .modal-footer{
+    padding: 5px 15px;
+}
+
+[block-name="page-alert"]{
+    padding: 5px 15px 0 0;
+}
+
+.right-side{
+    margin-left: 230px
+}
+
+.alert{
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+[helper="table"] .box-header .box-title{font-weight: bold; padding-left: 0px;}
+[helper="table"] .box-footer{padding: 5px 10px;}
+[helper="table"] > hr{margin: 0px;}
+[helper="table"] > p{margin: 5px 10px 10px 10px;}
+[helper="table"] tr td:first-child, [helper="table"] tr th:first-child{padding-left: 10px;}
+[helper="table"] tr td [type="checkbox"]{margin: 0;}
+[helper="table"] .box-tools {padding-right: 5px !important;}
+[block-name="form-module-options"] .box-header .box-title{font-weight: bold; padding-left: 0px;}
+[block-name="form-module-options"] .box-footer{padding: 5px 10px;}

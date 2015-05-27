@@ -1,0 +1,40 @@
+<div block-name="page-alert"></div>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box  box-solid box-primary">
+                <div class="box-header">
+                    <i class="fa fa-cog"></i>
+                    <h3 class="box-title"><?php echo $this->translate('Provider Auth Settings'); ?></h3>
+                </div>
+                <div class="box-body clearfix">
+                    <form helper="form" action="<?php echo $this->url('admin/users/socials', ['action' => 'ajax']); ?>">
+                        <?php foreach($listSocials as $index=>$item) { if(!$item['enabled']) continue; ?>
+                            <div form-array-object name="providers">
+                                <input type="hidden" name="provider" value="<?php echo $index; ?>">
+                                <div class="row" name="keys" form-object>
+                                    <?php foreach($item['keys'] as $_index=>$_key) { ?>
+                                        <div class="col-xs-4">
+                                            <div class="form-group ">
+                                                <label class="control-label"><?php echo $item['label']; ?> <?php echo lcfirst($_index); ?></label>
+                                                <div class="">
+                                                    <input type="text" name="<?php echo $_index; ?>" value="<?php echo $_key; ?>" class="form-control" placeholder="<?php echo lcfirst($_index); ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php }?>
+                                </div>
+                            </div>
+                            <hr>
+                        <?php }?>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" btn-name="send-form" class="btn btn-success pull-right"><i class="menu-icon icon-chevron-down"></i> Save Options</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

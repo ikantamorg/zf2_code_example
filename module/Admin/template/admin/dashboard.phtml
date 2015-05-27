@@ -1,0 +1,12 @@
+<section class="content-header">
+    <h1> Admin dashboard </h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <?php foreach($widgets as $widget) {?>
+        <?php echo $this->widget($widget['module'], $widget['widget_name']); ?>
+        <?php }?>
+    </div>
+</section>
+

@@ -1,0 +1,9 @@
+
+<div class="img-thumbnail" style="width: <?php echo $width; ?>px; height: <?php echo $height; ?>px;"  helper="storage-load-image-crop" action="<?php echo $url; ?>">
+    <?php if(!empty($imageUrl)) {?>
+        <img src="<?php echo $imageUrl; ?>" style="opacity: 1;">
+    <?php }?>
+    <input name="file" type="file">
+    <i class="fa fa-upload"></i>
+    <input name="<?php echo $name; ?>" type="hidden" value="<?php echo empty($value) ? '' : $value; ?>">
+</div>

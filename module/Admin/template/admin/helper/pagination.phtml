@@ -1,0 +1,27 @@
+
+<div class="box-footer clearfix">
+    <div block-name="pagination">
+        <input type="hidden" name="page" value="<?php echo $activePage; ?>">
+        <div class="pull-left mt5">Showing <?php echo $start; ?> to <?php echo $end; ?> of <?php echo $countAll; ?> entries</div>
+
+        <?php if($countPages > 1) {?>
+        <ul class="pagination pagination-sm no-margin pull-right ml10i">
+            <?php if($activePage != 1) {?>
+            <li btn-page="<?php echo $activePage - 1; ?>"><a href="#">«</a></li>
+            <?php }?>
+
+            <?php for($i = 1; $i <= $countPages; $i++){?>
+            <li <?php if($i == $activePage) {?>class="active"<?php }?> btn-page="<?php echo $i; ?>"><a href="#"><?php echo $i; ?></a></li>
+            <?php }?>
+
+            <?php if($activePage != $countPages) {?>
+            <li btn-page="<?php echo $activePage + 1; ?>"><a href="#">»</a></li>
+            <?php }?>
+        </ul>
+        <?php }?>
+
+        <div block-name="table-options" class="pull-right ">
+            <?php echo $this->partial('block/admin/count_to_page', ['collection' => $collection]); ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<?php
+
+namespace Storage\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
+use Core\Entity\AbstractEntity;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="storage_files")
+ */
+class File extends AbstractEntity{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Storage\Entity\Storage", inversedBy="files")
+     * @ORM\JoinColumn(name="storage_id", referencedColumnName="id")
+     **/
+    protected $storage;
+
+    /** @ORM\Column(type="integer", nullable=false, length=64) */
+    protected $user_id;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $name;
+
+    /** @ORM\Column(type="string", nullable=false, length=1024) */
+    protected $path;
+
+    /** @ORM\Column(type="integer", nullable=false, length=1024) */
+    protected $size;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $mime_major;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $mime_minor;
+
+    /** @ORM\Column(type="integer", nullable=true, length=1) */
+    protected $is_tmp;
+
+    /** @ORM\Column(type="integer", nullable=true, length=64) */
+    protected $create_at;
+
+    /** @ORM\Column(type="integer", nullable=true, length=64) */
+    protected $modified_at;
+
+    public function createClone()
+    {
+        $clone = clone $this;
+        $clone->unsetId();
+        $extension = explode('.', $this->getName());
+        $clone->setPath($this->getStorage()->upload($this->getMap(), end($extension)));
+        $clone->save();
+        return $clone;
+    }
+
+    public function getMap()
+    {
+        return $this->getStorage()->getAdapter()->map($this->getPath());
+    }
+
+    public function unsetId()
+    {
+        $this->id = null;
+        return $this;
+    }
+}

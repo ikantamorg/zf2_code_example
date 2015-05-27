@@ -1,0 +1,27 @@
+<div block-name="page-alert"></div>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success" block-name="admin-storage-manager" helper="table" action="<?php echo $this->url('admin/storages/manager'); ?>">
+                <div class="box-header">
+                    <i class="fa fa-hdd-o"></i>
+                    <h3 class="box-title"><?php echo $this->translate("Manage storage services"); ?></h3>
+                    <div class="box-tools" block-name="filters">
+                        <div class="input-group pull-right">
+                            <div class="btn-group">
+                                <button btn-name="table-create-new" type="button" class="btn btn-success btn-sm ml10i">
+                                    <i class="fa fa-plus"></i>
+                                    <?php echo $this->translate("Add new storage"); ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p><?php echo $this->translate("View and manage storage system services. The storage system is used to handle file uploads for your site. You can configure this to use Amazon's S3 or CloudFront service."); ?></p>
+                <hr>
+                <?php echo $this->adminBlockTable($this->variables); ?>
+            </div>
+        </div>
+    </div>
+</section>
+

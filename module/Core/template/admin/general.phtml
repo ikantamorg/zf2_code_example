@@ -1,0 +1,135 @@
+<div block-name="page-alert"></div>
+
+<section class="content">
+    <div class="row">
+
+
+        <div class="col-xs-6">
+            <div class="box box-solid box-primary" block-name="form-module-options">
+                <div class="box-header">
+                    <i class="fa fa-github"></i>
+                    <h3 class="box-title"><?php echo $this->translate("GitHub Update"); ?></h3>
+                </div>
+                <div class="box-body clearfix">
+                    <div helper="form" action="<?php echo $this->url('admin/general-options', ['action' => 'github']); ?>">
+                        <form action="" method="POST" class="form-horizontal" role="form">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">GitHub executable path</label>
+                                            <div class="">
+                                                <?php echo $this->formElement($formGithub->get('github_executable_path')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">GitHub remote</label>
+                                            <div class="">
+                                                <?php echo $this->formElement($formGithub->get('github_remote')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">GitHub branch</label>
+                                            <div class="">
+                                                <?php echo $this->formElement($formGithub->get('github_branch')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">GitHub username</label>
+                                            <div class="">
+                                                <?php echo $this->formElement($formGithub->get('github_username')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">GitHub password</label>
+                                            <div class="">
+                                                <?php echo $this->formElement($formGithub->get('github_password')); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="control-group block">
+                            <div class="controls">
+                                <button type="submit" btn-name="send-form" class="btn btn-success pull-right ml10">Save Options</button>
+
+                                <button type="submit" btn-name="status-github" action="<?php echo $this->url('admin/general-options', ['action' => 'github-status']); ?>" class="btn btn-info pull-right  ml10">
+                                    <i class="fa fa-git"></i>  Get status
+                                </button>
+
+                                <!--<button type="submit" btn-name="update-github" action="<?php /*echo $this->url('admin/general-options', ['action' => 'github-update']); */?>" class="btn btn-warning pull-right">
+                                    <i class="fa fa-refresh"></i>  Update GitHub
+                                </button>-->
+                                <div class="clearfix"></div>
+                                <pre block-name="github-line" class="mt20">Command line: <br></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="box box-solid box-primary" block-name="form-module-options">
+                <div class="box-header">
+                    <i class="fa fa-cog"></i>
+                    <h3 class="box-title"><?php echo $this->translate("General options"); ?></h3>
+                </div>
+                <div class="box-body clearfix">
+                    <div helper="form" action="<?php echo $this->url('admin/general-options', ['action' => 'ajax']); ?>">
+                        <form action="" method="POST" class="form-horizontal" role="form">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Default timezone</label>
+                                    <div class="">
+                                        <?php echo $this->formElement($form->get('default_timezone')); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="control-group block">
+                            <div class="controls">
+                                <button type="submit" btn-name="send-form" class="btn btn-success pull-right">
+                                    <i class="menu-icon icon-chevron-down"></i> Save Options
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function(){
+        $('[btn-name="update-github"]').on('click', function(){
+            var $this = $(this);
+            $this.iformSendAjax({
+                success: function(data){
+                    $('[block-name="github-line"]').append(data.text);
+                }
+            });
+            return false;
+        });
+        $('[btn-name="status-github"]').on('click', function(){
+            var $this = $(this);
+            $this.iformSendAjax({
+                success: function(data){
+                    $('[block-name="github-line"]').append(data.text);
+                }
+            });
+            return false;
+        });
+
+    });
+</script>

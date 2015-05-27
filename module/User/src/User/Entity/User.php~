@@ -1,0 +1,110 @@
+<?php
+
+namespace User\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
+use Core\Entity\AbstractEntity;
+
+/**
+ * @ORM\Table(name="user_users")
+ * @ORM\Entity(repositoryClass="User\Repository\User")
+ * @ORM\HasLifecycleCallbacks()
+ */
+class User extends AbstractEntity{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /** @ORM\Column(type="string", nullable=true, length=255) */
+    protected $email;
+
+    /** @ORM\Column(type="string", nullable=true, length=255) */
+    protected $first_name;
+
+    /** @ORM\Column(type="string", nullable=true, length=255) */
+    protected $last_name;
+
+    /** @ORM\Column(type="string", nullable=true, length=255) */
+    protected $displayname;
+
+    /** @ORM\Column(type="string", nullable=true) */
+    protected $birth_date;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $password;
+
+    /** @ORM\Column(type="integer", nullable=false) */
+    protected $create_at;
+    
+    /** @ORM\Column(type="integer", nullable=true) */
+    protected $is_locked;
+
+    /** @ORM\Column(type="integer", nullable=true) */
+    protected $active_notification;
+
+    /** @ORM\Column(type="integer", nullable=true) */
+    protected $avatar_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User\Entity\Role", inversedBy="users")
+     * @ORM\JoinTable(name="user_user_roles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     * )
+     */
+    protected $roles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="User\Entity\Social", mappedBy="user", cascade={"remove"})
+     **/
+    protected $socials;
+
+    /**
+     * @ORM\OneToMany(targetEntity="User\Entity\Session", mappedBy="user", cascade={"remove"})
+     **/
+    protected $sessions;
+
+
+    public function getNameFromAdmin()
+    {
+        return $this->getEmail();
+    }
+
+    public function inRoleSlug($slug)
+    {
+        foreach($this->getRoles() as $role){
+            if($role->getSlug() == $slug){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function inRole(\User\Entity\Role $roles)
+    {
+        foreach($this->getRoles() as $role){
+            if($role->getSlug() == $roles->getSlug()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function lock()
+    {
+        $this->setIsLocked(1);
+        $this->save();
+        return $this;
+    }
+
+    public function unlock()
+    {
+        $this->setIsLocked(0);
+        $this->save();
+        return $this;
+    }
+}

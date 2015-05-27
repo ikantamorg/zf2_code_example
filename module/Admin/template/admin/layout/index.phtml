@@ -1,0 +1,105 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <?php echo $this->headLink()->appendStylesheet($this->basePath() . '/css/admin.css'); ?>
+    <?php echo $this->headScript(); ?>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+</head>
+<body class="pace-done skin-black">
+
+<script>
+
+   /* angular.module('admin',  ['ngRoute'])
+
+        .controller('coreController', function($scope, $route, $routeParams, $location) {
+            $scope.greeting = 'Welcome!';
+            $scope.menuTemplate = 'menu.html';
+        })
+
+        .controller('menuController', function($scope, $route, $routeParams, $location) {
+            $scope.greeting = 'Main Menu';
+        })
+
+        .controller('listController', function($scope, $routeParams) {
+            $scope.greeting = 'List';
+        })
+
+        .controller('testController', function($scope, $routeParams) {
+            $scope.greeting = 'Test';
+            setTimeout(function(){
+                $scope.greeting = 'Test111';
+            }, 400);
+        })
+
+        .config(function ($routeProvider) {
+            $routeProvider
+                .when('/list', {
+                    templateUrl: 'list.html',
+                    controller: 'listController'
+                })
+                .when('/test', {
+                    templateUrl: 'test.html',
+                    controller: 'testController'
+                });
+        });
+
+    angular.bootstrap(document, ['admin']);*/
+
+</script>
+
+<header class="header">
+    <a href="<?php echo $this->url('admin'); ?>" class="logo">
+        <!-- Add the class icon to your logo image or logo icon to add the margining -->
+        ABoompx
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="left-side sidebar-offcanvas">
+        <?php echo $this->adminBlockMenu(); ?>
+    </aside>
+
+    <aside class="right-side">
+        <?php echo $this->content; ?>
+    </aside>
+</div>
+
+
+</body>
+
+
+<?php echo $this->inlineScript()->appendFile($this->basePath() . '/js/admin.js'); ?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.table-message tbody tr').click(
+            function()
+            {
+                $(this).toggleClass('resolved');
+            }
+        );
+    } );
+</script>
+
+
+</html>

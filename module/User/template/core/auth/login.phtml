@@ -1,0 +1,6 @@
+<h1>Login</h1>
+
+<form action="<?php echo $this->url('login', ['action' => 'ajax']); ?>" helper="form">
+    <?php echo $this->formCollection($formLogin); ?>
+    <button class="btn btn-success">Login</button>
+</form>

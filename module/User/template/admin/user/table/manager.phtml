@@ -1,0 +1,28 @@
+<?php foreach($collection as $object) {?>
+    <tr data-id="<?php echo $object->getId(); ?>">
+        <td><?php echo $object->getId(); ?></td>
+        <td><?php echo $object->getEmail(); ?></td>
+
+        <td><?php echo date('F j, Y', $object->getCreateAt()); ?></td>
+
+        <td>
+            <?php foreach($object->getSessions() as $session) {?>
+                <div>
+                    <?php echo $session->getBrowser() . ' ' . $session->getVersion() . ' (' . $session->getPlatform() . ') - ' . $session->getLastAgo() . ' ' . $session->getIp(); ?>
+                </div>
+            <?php }?>
+        </td>
+
+        <td class="p3i">
+            <button btn-name="user-lock" <?php if($object->getId() == '1') {?>disabled<?php }?> type="button" class="btn btn-info btn-sm btn-flat">
+                <?php if(!$object->getIsLocked()) {?>
+                    <i class="fa fa-unlock" data-toggle="tooltip" title="Is Blocked"></i>
+                <?php } else {?>
+                    <i class="fa fa-lock" data-toggle="tooltip" title="Is Blocked"></i>
+                <?php }?>
+            </button>
+            <button btn-name="table-tr-edit" type="button" class="btn btn-info btn-flat btn-sm"><i class="fa fa-edit"></i> <?php echo $this->translate("Edit"); ?></button>
+            <button btn-name="table-tr-delete" type="button" <?php if($object->getId() == '1') {?>disabled<?php }?> class="btn btn-danger btn-flat btn-sm"><i class="fa fa-trash"></i> <?php echo $this->translate("Delete"); ?></button>
+        </td>
+    </tr>
+<?php }?>

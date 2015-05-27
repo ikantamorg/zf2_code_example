@@ -1,0 +1,11 @@
+<?php foreach($collection as $object) {?>
+    <tr data-id="<?php echo $object->getId(); ?>">
+        <td><?php echo $object->getId(); ?></td>
+        <td><?php echo $object->getName(); ?></td>
+        <td><?php echo $object->getSlug(); ?></td>
+
+        <td class="p3i">
+            <button btn-name="table-tr-delete" type="button" class="btn btn-danger btn-flat btn-sm"><i class="fa fa-trash"></i> <?php echo $this->translate("Delete"); ?></button>
+        </td>
+    </tr>
+<?php }?>

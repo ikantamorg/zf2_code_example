@@ -1,0 +1,9 @@
+
+<?php $countToPage = $collection->getQuery()->getMaxResults(); ?>
+
+<select class="form-control w70 h29i input-sm" name="count_to_page">
+    <option <?php if($countToPage == '10') { ?> selected<?php } ?> value="10">10</option>
+    <option <?php if($countToPage == '20') { ?> selected<?php } ?> value="20">20</option>
+    <option <?php if($countToPage == '30') { ?> selected<?php } ?> value="30">30</option>
+    <option <?php if($countToPage == '200') { ?> selected<?php } ?> value="200">200</option>
+</select>

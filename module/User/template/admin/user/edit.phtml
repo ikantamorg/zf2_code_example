@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel"><?php echo $this->translate("Edit user"); ?></h4>
+</div>
+<div class="modal-body clearfix">
+    <div class="col-xs-12">
+        <?php echo $this->form($edit_form); ?>
+    </div>
+</div>
+<div class="modal-footer">
+    <button btn-name="table-edit-cancel" class="btn btn-default"><i class="fa fa-times"></i> <?php echo $this->translate("Cancel"); ?></button>
+    <button btn-name="table-edit-save" class="btn btn-success"><i class="fa fa-chevron-down"></i> <?php echo $this->translate("Save"); ?></button>
+</div>

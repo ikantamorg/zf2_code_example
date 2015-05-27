@@ -1,0 +1,8 @@
+
+<div  helper="storage-load-image" style="<?php if(!empty($width)) {?>width: <?php echo $width; ?>px;<?php }?> <?php if(!empty($height)) {?>height: <?php echo $height; ?>px;<?php }?>" action="<?php echo $url; ?>">
+    <input name="file" type="file">
+    <input name="<?php echo $name; ?>" type="hidden">
+    <?php if(!empty($imageUrl)) {?>
+        <img src="<?php echo $imageUrl; ?>" style="opacity: 1;">
+    <?php }?>
+</div>

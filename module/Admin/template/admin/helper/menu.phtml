@@ -1,0 +1,39 @@
+<section class="sidebar">
+    <ul class="sidebar-menu">
+        <?php foreach ($menu as $index=>$_menu){ ?>
+        <?php
+        $isActive = false;
+        if($_menu->count()) {
+            foreach ($_menu as $level2page) {
+                if ($level2page->isActive()) {
+                    $isActive = true;
+                }
+            }
+        } else {
+            $isActive = $_menu->isActive();
+        } ?>
+
+            <li class="<?php if($_menu->count()) {?>treeview<?php }?><?php if($isActive) {?> active<?php }?>">
+                <a href="<?php echo $this->url($_menu->getRoute(), array('action' => $_menu->getAction())); ?>">
+                    <i class="<?php echo $_menu->icon; ?>"></i> <span><?php echo $this->translate($_menu->getLabel()); ?></span>
+                    <?php if($_menu->count()) {?>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    <?php }?>
+                </a>
+                <?php if($_menu->count()) {?>
+                    <ul class="treeview-menu">
+                        <?php foreach ($_menu as $level2page) {?>
+                            <li class="<?php if($level2page->isActive()) {?>active<?php }?>">
+                                <a href="<?php echo $this->url($level2page->getRoute(), array('action' => $level2page->getAction())); ?>">
+                                    <i class="fa fa-angle-double-right"></i> <?php echo $this->translate($level2page->getLabel()); ?>
+                                </a>
+                            </li>
+                        <?php }?>
+                    </ul>
+                <?php }?>
+            </li>
+
+        <?php }?>
+        <li><a href="<?php echo $this->url('admin/logout'); ?>"><i class="menu-icon icon-signout"></i><?php echo $this->translate("Logout"); ?></a></li>
+    </ul>
+</section>

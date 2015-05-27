@@ -1,0 +1,57 @@
+<div class="box-body no-padding">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <?php foreach($cols as $col) {?>
+                <th><?php echo $this->translate($col); ?></th>
+            <?php }?>
+        </tr>
+        </thead>
+        <tbody>
+        <?php echo $this->partial($template_main . '/table', $this->variables); ?>
+        </tbody>
+    </table>
+</div>
+
+<?php if(!empty($template_paginator)) {?>
+    <?php echo $this->paginationHelper($collection, ['template' => $template_paginator]); ?>
+<?php }?>
+
+
+<?php if(!empty($this->create_form)) {?>
+    <div class="modal fade" block-name="table-create-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-<?php echo $create_form->getAttribute('wp'); ?>">
+            <div class="modal-content box-solid">
+                <?php if(!empty($this->template_create)) { ?>
+
+                    <?php echo $this->partial($template_create, $this->variables); ?>
+                <?php } else {?>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo $this->translate($create_form->getLabel()); ?></h4>
+                    </div>
+                    <form class="form-horizontal row-fluid">
+                        <div class="modal-body clearfix">
+                            <div class="col-xs-12">
+                                <?php echo $this->form($create_form); ?>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button btn-name="table-create-cancel" class="btn btn-default"><i class="fa fa-times"></i> <?php echo $this->translate("Cancel"); ?></button>
+                            <button btn-name="table-create-save" class="btn btn-success"><i class="fa fa-chevron-down"></i> <?php echo $this->translate("Create"); ?></button>
+                        </div>
+                    </form>
+                <?php }?>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" block-name="table-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-<?php echo $create_form->getAttribute('wp'); ?>">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+<?php }?>
+
+

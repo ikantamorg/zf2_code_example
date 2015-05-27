@@ -1,0 +1,14 @@
+
+<div helper="storage-load-list-images" action="<?php echo $url; ?>">
+    <ul block-name="list">
+        <?php if(!empty($images)) foreach($images as $image) {?>
+            <?php
+            echo $this->partial('storage/load/list_image/block', [
+                'src' => $image->getMainHref(),
+                'id' => $image->getId()
+            ]);
+            ?>
+        <?php }?>
+    </ul>
+    <div class="btn-load"><input name="file" multiple type="file"></div>
+</div>

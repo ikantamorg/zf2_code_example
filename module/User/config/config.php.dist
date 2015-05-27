@@ -1,0 +1,46 @@
+<?php
+
+return [
+               'social_auth' => [
+                   'list' => [
+                       'AOL'                   => ['enabled' => false, 'label' => 'AOL'],
+                       'BeatsMusic'            => ['enabled' => false, 'label' => 'Beats Music'],
+                       'BitBucket'             => ['enabled' => false, 'label' => 'BitBucket'],
+                       'Disqus'                => ['enabled' => false, 'label' => 'Disqus'],
+                       'Dribbble'              => ['enabled' => false, 'label' => 'Dribbble'],
+                       'Dropbox'               => ['enabled' => false, 'label' => 'Dropbox'],
+                       'DrupalOAuth2'          => ['enabled' => false, 'label' => 'Drupal OAuth2'],
+                       'Facebook'              => ['enabled' => true,  'label' => 'Facebook',          'keys' => ['id', 'secret']],
+                       'Foursquare'            => ['enabled' => false, 'label' => 'Foursquare'],
+                       'GitHub'                => ['enabled' => false, 'label' => 'GitHub'],
+                       'Goodreads'             => ['enabled' => false, 'label' => 'Goodreads'],
+                       'Google'                => ['enabled' => false, 'label' => 'Google',            'keys' => ['id', 'secret']],
+                       'Identica'              => ['enabled' => false, 'label' => 'Identica'],
+                       'Instagram'             => ['enabled' => false, 'label' => 'Instagram'],
+                       'Latch'                 => ['enabled' => false, 'label' => 'Latch'],
+                       'LinkedIn'              => ['enabled' => false, 'label' => 'LinkedIn',          'keys' => ['id', 'secret']],
+                       'Live'                  => ['enabled' => false, 'label' => 'Live'],
+                       'MailChimp'             => ['enabled' => false, 'label' => 'Mail Chimp'],
+                       'Mailru'                => ['enabled' => false, 'label' => 'Mailru'],
+                       'Murmur'                => ['enabled' => false, 'label' => 'Murmur'],
+                       'Odnoklassniki'         => ['enabled' => false, 'label' => 'Odnoklassniki'],
+                       'OpenID'                => ['enabled' => false, 'label' => 'Open ID'],
+                       'PaypalOpenID'          => ['enabled' => false, 'label' => 'Paypal Open ID'],
+                       'PixelPin'              => ['enabled' => false, 'label' => 'Pixel Pin'],
+                       'Pixnet'                => ['enabled' => false, 'label' => 'Pixnet'],
+                       'QQ'                    => ['enabled' => false, 'label' => 'QQ'],
+                       'Rhapsody'              => ['enabled' => false, 'label' => 'Rhapsody'],
+                       'Skyrock'               => ['enabled' => false, 'label' => 'Skyrock'],
+                       'SoundCloud'            => ['enabled' => false, 'label' => 'Sound Cloud'],
+                       'Steam'                 => ['enabled' => false, 'label' => 'Steam'],
+                       'Tumblr'                => ['enabled' => false, 'label' => 'Tumblr'],
+                       'TwitchTV'              => ['enabled' => false, 'label' => 'TwitchTV'],
+                       'Twitter'               => ['enabled' => false, 'label' => 'Twitter'],
+                       'Vkontakte'             => ['enabled' => true,  'label' => 'Vkontakte',         'keys' => ['id', 'secret']],
+                       'WordPress'             => ['enabled' => false, 'label' => 'WordPress'],
+                       'XING'                  => ['enabled' => false, 'label' => 'XING'],
+                       'Yahoo'                 => ['enabled' => false, 'label' => 'Yahoo'],
+                       'Yandex'                => ['enabled' => false, 'label' => 'Yandex'],
+                   ]
+               ]
+           ];

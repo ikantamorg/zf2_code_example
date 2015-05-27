@@ -1,0 +1,79 @@
+<?php
+
+namespace Storage\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
+use Core\Entity\AbstractEntity;
+use User\Traits\ServiceAuth;
+/**
+ * @ORM\Entity(repositoryClass="Storage\Repository\Storage")
+ * @ORM\Table(name="storage_storages")
+ */
+class Storage extends AbstractEntity
+{
+    use ServiceAuth;
+
+
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Storage\Entity\File", mappedBy="storage")
+     **/
+    protected $files;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $name;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $adapter_class;
+
+    /** @ORM\Column(type="string", nullable=false, length=255) */
+    protected $config;
+
+
+    public function getAdapter()
+    {
+        $class = $this->getAdapterClass();
+        return new $class(unserialize($this->getConfig()));
+    }
+
+    public function upload($pathFile, $name = null)
+    {
+        $mime = mime_content_type($pathFile);
+        $mime = explode('/', $mime);
+        $name = $name ? $name : basename($pathFile);
+        $extension = explode('.', $name);
+        $path = $this->getAdapter()->create($pathFile, end($extension));
+
+        $file = new \Storage\Entity\File();
+
+        if($this->getServiceAuth()->isLogin()){
+            $file->setUserId($this->getServiceAuth()->getLoginUser()->getId());
+        } else {
+            $file->setUserId(null);
+        }
+
+        $file->setMimeMajor($mime[0]);
+        $file->setMimeMinor($mime[1]);
+        $file->setName($name);
+        $file->setSize(filesize($pathFile));
+        $file->setStorage($this);
+        $file->setCreateAt(time());
+        $file->setModifiedAt(time());
+        $file->setIsTmp(1);
+        $file->setPath($path);
+        $file->save();
+        return $file;
+    }
+
+    public function getTypeName()
+    {
+        return $this->getAdapter()->getName();
+    }
+}

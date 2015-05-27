@@ -1,0 +1,41 @@
+<div class="col-lg-9 col-xs-6">
+    <!-- solid sales graph -->
+    <div class="box box-solid bg-teal-gradient">
+        <div class="box-header">
+            <i class="fa fa-th"></i>
+            <h3 class="box-title"><?php echo $this->translate("Piwik Visitors Graph"); ?></h3>
+        </div>
+        <div class="box-body border-radius-none">
+            <div class="chart" id="line-chart" style="height: 250px;"></div>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+</div>
+<?php $this->inlineScript()->appendFile($this->basePath() . '/admin/js/morris.js'); ?>
+<script>
+    $(function(){
+        var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                <?php foreach($lastWeek as $index=>$item) {?>
+                {y: '<?php echo $index; ?>', uniq_visitors: <?php echo !empty($item->nb_uniq_visitors) ? $item->nb_uniq_visitors : 0; ?>, nb_visits: <?php echo !empty($item->nb_visits) ? $item->nb_visits : 0; ?>},
+                <?php }?>
+            ],
+            xkey: 'y',
+            ykeys: ['uniq_visitors', 'nb_visits'],
+            labels: ['Uniq visitors', 'Visits'],
+            lineColors: ['#efefef'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            gridTextColor: "#fff",
+            gridStrokeWidth: 0.4,
+            pointSize: 4,
+            pointStrokeColors: ["#efefef"],
+            gridLineColor: "#efefef",
+            gridTextFamily: "Open Sans",
+            gridTextSize: 10
+        });
+    })
+
+</script>

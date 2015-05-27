@@ -1,0 +1,8 @@
+<?php foreach($collection as $object) {?>
+    <tr>
+        <td><?php echo $object->getId(); ?></td>
+        <td><?php echo $object->getName(); ?></td>
+        <td><?php echo $object->getTypeName(); ?></td>
+        <td><?php echo $object->getSizeFiles('MB'); ?> MB.</td>
+    </tr>
+<?php }?>

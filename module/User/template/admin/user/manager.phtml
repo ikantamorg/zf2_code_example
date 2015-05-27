@@ -1,0 +1,35 @@
+<div block-name="page-alert"></div>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success" block-name="user-manager" helper="table" action="<?php echo $this->url('admin/users/manager'); ?>">
+                <div class="box-header">
+                    <i class="fa fa-user"></i>
+                    <h3 class="box-title"><?php echo $this->translate("Manage members"); ?></h3>
+
+                    <div class="box-tools" block-name="table-filters">
+                        <div class="input-group">
+                            <select name="role_id" class="form-control input-sm pull-right" style="width: 150px;">
+                                <option value="">All</option>
+                                <?php foreach($roles as $role) {?>
+                                    <option value="<?php echo $role->getId(); ?>"><?php echo $role->getName(); ?></option>
+                                <?php }?>
+                            </select>
+
+                            <div class="input-group-btn">
+                                <button btn-name="table-filters" class="btn btn-sm btn-default"><i class="fa fa-filter"></i></button>
+                                <button btn-name="table-create-new" type="button" class="btn btn-success btn-sm ml10i">
+                                    <i class="fa fa-plus"></i>
+                                    <?php echo $this->translate("Add new user"); ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p><?php echo $this->translate("The members of your social network are listed here. If you need to search for a specific member, enter your search criteria in the fields below."); ?></p>
+                <hr>
+                <?php echo $this->adminBlockTable($this->variables); ?>
+            </div>
+        </div>
+    </div>
+</section>

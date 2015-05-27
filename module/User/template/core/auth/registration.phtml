@@ -1,0 +1,6 @@
+<h1>Registration</h1>
+
+<form action="<?php echo $this->url('registration', ['action' => 'ajax']); ?>" helper="form">
+<?php echo $this->formCollection($formRegistration); ?>
+    <button class="btn btn-success">Registration</button>
+</form>
